@@ -170,10 +170,11 @@ class GeoNames(Geocoder): # pylint: disable=W0223
 
             placename = place.get('name')
             state = place.get('adminCode1', None)
+            county = place.get('adminCode2', None)
             country = place.get('countryCode', None)
 
             location = ', '.join(
-                [x for x in [placename, state, country] if x]
+                [x for x in [placename, county, state, country] if x]
             )
 
             return Location(location, (latitude, longitude), place)
